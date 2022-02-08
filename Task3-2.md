@@ -73,9 +73,9 @@ ssh -t localhost 'tty'
 13.Бывает, что есть необходимость переместить запущенный процесс из одной сессии в другую. Попробуйте сделать это, воспользовавшись reptyr. Например, так можно перенести в screen процесс, который вы запустили по ошибке в обычной SSH-сессии.
 
 Ответ: 
-vagrant@vagrant:~$ tty
+vagrant@vagrant:$ tty
 /dev/pts/0
-vagrant@vagrant:~$ top
+vagrant@vagrant:$ top
 top - 23:01:15 up 1 min,  1 user,  load average: 0.32, 0.14, 0.05
 Tasks: 130 total,   1 running, 129 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  0.0 us,  1.5 sy,  0.0 ni, 98.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -83,29 +83,29 @@ MiB Mem :   1987.1 total,   1381.4 free,    129.8 used,    475.9 buff/cache
 MiB Swap:    980.0 total,    980.0 free,      0.0 used.   1697.8 avail Mem
 ..................
 [1]+  Stopped                 top
-vagrant@vagrant:~$ ps -a
+vagrant@vagrant:$ ps -a
     PID TTY          TIME CMD
    1227 pts/0    00:00:00 top
    1228 pts/0    00:00:00 ps
    
-vagrant@vagrant:~$ screen -S 1227
+vagrant@vagrant:$ screen -S 1227
 
-vagrant@vagrant:~$ sudo reptyr 1227
+vagrant@vagrant:$ sudo reptyr 1227
 Unable to attach to pid 1227: Operation not permitted
 
-vagrant@vagrant:~$ exit
+vagrant@vagrant:$ exit
 
-vagrant@vagrant:~$ sudo nano /proc/sys/kernel/yama/ptrace_scope - (права редактируем)
-vagrant@vagrant:~$ screen -S 1227
+vagrant@vagrant:$ sudo nano /proc/sys/kernel/yama/ptrace_scope - (права редактируем)
+vagrant@vagrant:$ screen -S 1227
 
 screen:
-agrant@vagrant:~$ reptyr 1227
+agrant@vagrant:$ reptyr 1227
 ctrl+a и d
 
 Получаем:
 [detached from 1261.1227]
-vagrant@vagrant:~$ ps -a
-    PID TTY          TIME CMD
+vagrant@vagrant:$ ps -a
+    PID TTY         TIME CMD
    1269 pts/1    00:00:00 reptyr
    1270 pts/0    00:00:00 top <defunct>
    1276 pts/0    00:00:00 ps
