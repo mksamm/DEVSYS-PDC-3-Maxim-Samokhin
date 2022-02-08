@@ -20,9 +20,9 @@ vagrant@vagrant:~$ tty
 
 Команда vagrant ssh и направляем поток std out по пути /dev/pts/0 to /dev/pts/1:
 
-Ответ: vagrant@vagrant:~$ ls > /dev/pts/1
-vagrant@vagrant:~$
-vagrant@vagrant:~$ loco2.txt  loco.txt
+Ответ: vagrant@vagrant:$ ls > /dev/pts/1
+vagrant@vagrant:$
+vagrant@vagrant~$ loco2.txt  loco.txt
 
 5.Получится ли одновременно передать команде файл на stdin и вывести ее stdout в другой файл? 
 Ответ: cat < loco.txt > loco2.txt
