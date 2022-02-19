@@ -3,11 +3,11 @@
 Ответ: системный вызов chdir ("/tmp")
 
 2. Попробуйте использовать команду file на объекты разных типов на файловой системе. Например:
-vagrant@netology1:~$ file /dev/tty
+vagrant@netology1:$ file /dev/tty
 /dev/tty: character special (5/0)
-vagrant@netology1:~$ file /dev/sda
+vagrant@netology1:$ file /dev/sda
 /dev/sda: block special (8/0)
-vagrant@netology1:~$ file /bin/bash
+vagrant@netology1:$ file /bin/bash
 /bin/bash: ELF 64-bit LSB shared object, x86-64
 Используя strace выясните, где находится база данных file на основании которой она делает свои догадки.
 
@@ -33,9 +33,9 @@ root@vagrant:~# dpkg -L bpfcc-tools | grep sbin/opensnoop
 На какие файлы вы увидели вызовы группы open за первую секунду работы утилиты? Воспользуйтесь пакетом bpfcc-tools для Ubuntu 20.04. Дополнительные сведения по установке.
 
 Ответ:
-vagrant@vagrant:~$ sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
+vagrant@vagrant:$ sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
 ...
-vagrant@vagrant:~$ sudo opensnoop-bpfcc
+vagrant@vagrant:$ sudo opensnoop-bpfcc
 
 PID    COMM               FD ERR PATH
 808    vminfo              4   0 /var/run/utmp
@@ -69,10 +69,10 @@ PID    COMM               FD ERR PATH
 Ответ: uname -a использует системный вызов uname альтернативное местоположение в /proc, где можно узнать версию ядра и релиз ОС, цитата из MAN 2 Uname: Part of the utsname information is also accessible via /proc/sys/kernel/{ostype, hostname, osrelease, version, domainname}.
 
 7.Чем отличается последовательность команд через ; и через && в bash? Например:
-root@netology1:~# test -d /tmp/some_dir; echo Hi
+root@netology1:# test -d /tmp/some_dir; echo Hi
 Hi
-root@netology1:~# test -d /tmp/some_dir && echo Hi
-root@netology1:~#
+root@netology1:# test -d /tmp/some_dir && echo Hi
+root@netology1:#
 Есть ли смысл использовать в bash &&, если применить set -e?
 
 Ответ:
@@ -98,7 +98,7 @@ root@netology1:~#
 
 Ответ:
 
-vagrant@vagrant:~$ ps -o stat
+vagrant@vagrant:$ ps -o stat
 STAT
 Ss
 T
