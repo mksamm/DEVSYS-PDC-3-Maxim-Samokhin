@@ -21,7 +21,8 @@ HOST: stackoverflow.com
 HTTP/1.1 301 Moved Permanently  показывает, что запрошенный ресурс был окончательно перемещён
 # HOST: stackoverflow.com
 
-https://sun9-56.userapi.com/impg/POSHomnjKFGTFlW2w1KSqfPBfQp68oN7EBG7Xg/Hw2IALwLOa4.jpg?size=720x504&quality=96&sign=ffdcd9d1780e6ba239dd80426452dabd&type=album
+![Иллюстрация к проекту](https://sun9-56.userapi.com/impg/POSHomnjKFGTFlW2w1KSqfPBfQp68oN7EBG7Xg/Hw2IALwLOa4.jpg?size=720x504&quality=96&sign=ffdcd9d1780e6ba239dd80426452dabd&type=album)
+
 ```
 - В ответе укажите полученный HTTP код, что он означает?
 ```
