@@ -20,6 +20,7 @@ HOST: stackoverflow.com
 # GET /questions HTTP/1.0
 HTTP/1.1 301 Moved Permanently  показывает, что запрошенный ресурс был окончательно перемещён
 # HOST: stackoverflow.com
+
 https://sun9-56.userapi.com/impg/POSHomnjKFGTFlW2w1KSqfPBfQp68oN7EBG7Xg/Hw2IALwLOa4.jpg?size=720x504&quality=96&sign=ffdcd9d1780e6ba239dd80426452dabd&type=album
 ```
 - В ответе укажите полученный HTTP код, что он означает?
@@ -36,10 +37,11 @@ HTTP/1.1 301 Moved Permanently  показывает, что запрошенн�
 - приложите скриншот консоли браузера в ответ.
 
 ```
-
-```
 Наиболее продолжительные ответы отфильтрованы
 https://sun9-23.userapi.com/impg/dF60C7YNeapMqC8NXWIsa-mxkqmoiJTbKb7EUw/9M8cx9IPEVE.jpg?size=567x887&quality=96&sign=80fd30c4013ef345dab91b4caafccd88&type=album
+
+```
+
 
 ---
 3. Какой IP адрес у вас в интернете?
