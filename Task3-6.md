@@ -37,7 +37,7 @@ HTTP/1.1 301 Moved Permanently  показывает, что запрошенн�
 
 ```
 Наиболее продолжительные ответы отфильтрованы
-https://sun9-23.userapi.com/impg/dF60C7YNeapMqC8NXWIsa-mxkqmoiJTbKb7EUw/9M8cx9IPEVE.jpg?size=567x887&quality=96&sign=80fd30c4013ef345dab91b4caafccd88&type=album
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-2.png)
 
 ```
 
