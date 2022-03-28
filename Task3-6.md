@@ -66,33 +66,10 @@ source: RIPE # Filtered
 ```
 ---
 6. Повторите задание 5 в утилите `mtr`. На каком участке наибольшая задержка - delay?
-
-Наибольшая задержка 108.170.235.204 
-
-```vagrant (10.0.2.15)                                                                            2021-12-15T22:05:17+0000
-Keys:  Help   Display mode   Restart statistics   Order of fields   quit
-                                                                               Packets               Pings
- Host                                                                        Loss%   Snt   Last   Avg  Best  Wrst StDev
- 1. _gateway                                                                  0.0%     5    0.3   0.3   0.2   0.4   0.1
- 2. 192.168.0.1                                                               0.0%     5    1.2   1.2   0.7   1.5   0.3
- 3. nvsk-bras6.sib.ip.rostelecom.ru                                           0.0%     5    7.9   6.1   4.5   7.9   1.3
- 4. ae6.nvsk-rgr5.sib.ip.rostelecom.ru                                        0.0%     5    4.3   4.8   3.1   7.2   1.6
- 5. 87.226.183.89                                                             0.0%     5   46.3  45.4  44.7  46.3   0.7
- 6. 5.143.253.105                                                             0.0%     5   45.3  46.8  45.3  48.1   1.2
- 7. (waiting for reply)
- 8. (waiting for reply)
- 9. 108.170.235.204                                                           0.0%     5   62.4  64.2  62.4  66.1   1.3
-10. 142.250.236.77                                                            0.0%     5   60.8  60.8  59.5  61.4   0.8
-11. (waiting for reply)
-12. (waiting for reply)
-13. (waiting for reply)
-14. (waiting for reply)
-15. (waiting for reply)
-16. (waiting for reply)
-17. (waiting for reply)
-18. (waiting for reply)
-19. dns.google                                                               66.7%     4   57.3  57.3  57.3  57.3   0.0
 ```
+Наибольшая задержка 216.239.51.32
+```
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-6.png)
 ---
 
 7. Какие DNS сервера отвечают за доменное имя dns.google? Какие A записи? воспользуйтесь утилитой `dig`
