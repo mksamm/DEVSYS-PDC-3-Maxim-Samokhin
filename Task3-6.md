@@ -83,7 +83,7 @@ source: RIPE # Filtered
 * ns2.zdns.google.
 * ns4.zdns.google.
 ```
-![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-7-2.png)
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-7.png)
 
 ```
 A-записи:
