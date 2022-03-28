@@ -37,10 +37,8 @@ HTTP/1.1 301 Moved Permanently  показывает, что запрошенн�
 
 ```
 Наиболее продолжительные ответы отфильтрованы
-![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-2.png)
-
 ```
-
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-2.png)
 
 ---
 3. Какой IP адрес у вас в интернете?
