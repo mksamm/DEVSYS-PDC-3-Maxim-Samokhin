@@ -74,54 +74,22 @@ source: RIPE # Filtered
 
 7. Какие DNS сервера отвечают за доменное имя dns.google? Какие A записи? воспользуйтесь утилитой `dig`
 
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-7-2.png)
+```
 **DNS сервера:**
 
 * ns3.zdns.google.
 * ns1.zdns.google.
 * ns2.zdns.google.
 * ns4.zdns.google.
-```bash
-vagrant@vagrant:~$ dig -t ns dns.google
-; <<>> DiG 9.16.1-Ubuntu <<>> -t ns dns.google
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29499
-;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 65494
-;; QUESTION SECTION:
-;dns.google.                    IN      NS
-;; ANSWER SECTION:
-dns.google.             8854    IN      NS      ns3.zdns.google.
-dns.google.             8854    IN      NS      ns1.zdns.google.
-dns.google.             8854    IN      NS      ns2.zdns.google.
-dns.google.             8854    IN      NS      ns4.zdns.google.
-;; Query time: 8 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Wed Dec 15 22:08:15 UTC 2021
-;; MSG SIZE  rcvd: 116
+```
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-7-2.png)
+
 ```
 A-записи:
 * 8.8.4.4
 * 8.8.8.8
-```bash
-vagrant@vagrant:~$ dig dns.google
-; <<>> DiG 9.16.1-Ubuntu <<>> dns.google
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1450
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 65494
-;; QUESTION SECTION:
-;dns.google.                    IN      A
-;; ANSWER SECTION:
-dns.google.             640     IN      A       8.8.4.4
-dns.google.             640     IN      A       8.8.8.8
-;; Query time: 12 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Wed Dec 15 22:10:12 UTC 2021
-;; MSG SIZE  rcvd: 71
+
 ```
 8. Проверьте PTR записи для IP адресов из задания 7. Какое доменное имя привязано к IP? воспользуйтесь утилитой `dig`
 ```bash
