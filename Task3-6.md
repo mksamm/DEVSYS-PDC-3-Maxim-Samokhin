@@ -20,10 +20,8 @@ HOST: stackoverflow.com
 # GET /questions HTTP/1.0
 HTTP/1.1 301 Moved Permanently  показывает, что запрошенный ресурс был окончательно перемещён
 # HOST: stackoverflow.com
-
-![alt text](main/3-6-1.png "Описание будет тут") main/3-6-1.png
-
 ```
+![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-1.png)
 - В ответе укажите полученный HTTP код, что он означает?
 ```
 HTTP/1.1 301 Moved Permanently  показывает, что запрошенный ресурс был окончательно перемещён
