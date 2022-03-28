@@ -59,10 +59,17 @@ source: RIPE # Filtered
 ![alt tag](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/3-6-4.png)
 ---
 5. Через какие сети проходит пакет, отправленный с вашего компьютера на адрес 8.8.8.8? Через какие AS? Воспользуйтесь утилитой `traceroute`
-
-
 ```
-  https://sun9-31.userapi.com/impg/0fyZgjig5V4A4RPcmGlS4bbahTfNJLMsUhlQ4w/n_snNanLQbc.jpg?size=795x603&quality=96&sign=4206c5f004d92352730f4a0064e675bd&type=album
+  1    <1 мс    <1 мс    <1 мс  192.168.1.1
+  2     4 ms     4 ms     2 ms  100.100.0.1
+  3     9 ms     5 ms     2 ms  mpts-ss-51.msk.mts-internet.net
+  4    45 ms    45 ms    46 ms  mag9-cr02-be13.77.msk.mts-inter
+  5    46 ms    45 ms    46 ms  108.170.250.51
+  6     *        *        *     Превышен интервал ожидания для запроса.
+  7     *        *        *     Превышен интервал ожидания для запроса.
+  8    58 ms    59 ms    59 ms  216.239.51.32
+  9    58 ms    64 ms    57 ms  216.239.58.69
+ 10     *        *        *     Превышен интервал ожидания для запроса.
 ```
 ---
 6. Повторите задание 5 в утилите `mtr`. На каком участке наибольшая задержка - delay?
