@@ -8,4 +8,4 @@
 1. Скачен архив `wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz`
 2. Распакован в `/opt/node_exporter`
 3. Создан файл конфигурации сервиса `touch /etc/systemd/system/node_exporter.service` со следующим содержимым:
-![img.png]([img/Нетология3-4.PNG](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/%D0%9D%D0%B5%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F3-4.PNG))
+![Image alt] (https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/%D0%9D%D0%B5%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F3-4.PNG)
