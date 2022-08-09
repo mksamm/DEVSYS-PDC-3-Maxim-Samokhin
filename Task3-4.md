@@ -37,18 +37,18 @@ Node CPU:
     node_cpu_seconds_total{cpu="1",mode="user"}
     process_cpu_seconds_total
 ```
-Для памяти:
+Node Memory:
 ```
     node_memory_MemAvailable_bytes 
     node_memory_MemFree_bytes
 ```
-Для диска:
+Node Disk:
 ```
     node_disk_io_time_seconds_total{device="sda"} 
     node_disk_read_time_seconds_total{device="sda"} 
     node_disk_write_time_seconds_total{device="sda"}
 ```
-Для сети:
+Node Network:
 ```
     node_network_receive_errs_total{device="eth0"} 
     node_network_receive_bytes_total{device="eth0"} 
