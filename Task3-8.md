@@ -7,7 +7,7 @@ show ip route x.x.x.x/32
 show bgp x.x.x.x/32
 ```
 ### Решение:
-```
+```shell
 route-views>sh ip route 178.57.98.102
 Routing entry for 178.57.98.0/24
   Known via "bgp 6447", distance 20, metric 0
@@ -49,9 +49,9 @@ Paths: (22 available, best #22, table default)
       Origin IGP, localpref 100, valid, external
       Community: 3257:8070 3257:30114 3257:50001 3257:53900 3257:53902 20912:65004
       path 7FE089621390 RPKI State not found
-      
-      ```
-      ## 2. Создайте dummy0 интерфейс в Ubuntu. Добавьте несколько статических маршрутов. Проверьте таблицу маршрутизации.
+  ```
+     
+## 2. Создайте dummy0 интерфейс в Ubuntu. Добавьте несколько статических маршрутов. Проверьте таблицу маршрутизации.
 ### Решение:
 ```shell
 vagrant@vagrant:~$ sudo modprobe -v dummy numdummies=2
