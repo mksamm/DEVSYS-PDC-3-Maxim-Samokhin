@@ -22,7 +22,7 @@ sudo ufw enable
 sudo ufw status
 ```
 Процесс установки и настройки ufw
-![img.png] (https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course1.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course1.PNG)
 
 3. Установите hashicorp vault.
 ```
@@ -33,14 +33,14 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 # Установка Vault
 sudo apt-get update && sudo apt-get install vault
 ```
-![img.png] (https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course2.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course2.PNG)
 
 4. Cоздайте центр сертификации и выпустите сертификат для использования его в настройке веб-сервера nginx 
 ```
 sudo apt -y install jq
 vault server -dev -dev-root-token-id root
 ```
-![img.png] (https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course3.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course3.PNG)
 
 Необходимо открыть дополнительное окно терминала.
 ```
