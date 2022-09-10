@@ -84,3 +84,44 @@ cat vault.netology.devops.crt | jq -r '.data.private_key' > private.pem
 cat vault.netology.devops.crt | jq -r '.data.certificate' > cert.crt
 cat vault.netology.devops.crt | jq -r '.data.ca_chain[]' >> cert.crt
 ```
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course4.PNG)
+
+5. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
+Выполним копирование корневого сертификата в общую папку: 
+```
+cp ИМЯ_СЕРТИФИКАТА.crt /vagrant/
+```
+Затем на хостовой машины выполним:
+```
+WIN + R >> mmc
+```
+В окне "Корень консоли" переходим в вкладку "Доверенные корневые центры сертификации" > Правой кнопкой мыши выбираем в контекстном меню "Все задачи" > "Импорт".
+Выбираем наш корневой сертификат. 
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course5.PNG)
+
+6. Установите nginx.
+```
+sudo apt install nginx
+```
+7.Настройте nginx на https, используя ранее подготовленный сертификат
+```
+# Создаем директорию для хранения сертификатов
+sudo mkdir /etc/nginx/ssl
+sudo cp private.pem /etc/nginx/ssl/private.pem
+sudo cp cert.crt /etc/nginx/ssl/cert.crt
+# Редактируем конфигурацию стандартной страницы
+nano /etc/nginx/sites-available/default
+server {
+	listen				443 ssl;
+	server_name         vault.netology.devops;
+ 	ssl_certificate     /etc/nginx/ssl/cert.crt;
+	ssl_certificate_key /etc/nginx/ssl/private.pem;
+	ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+	ssl_ciphers         HIGH:!aNULL:!MD5;
+	...
+# Сохраняем и перезапускаем сервис
+sudo systemctl restart nginx
+```
+
+
