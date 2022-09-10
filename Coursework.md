@@ -125,5 +125,12 @@ server {
 # Сохраняем и перезапускаем сервис
 sudo systemctl restart nginx
 ```
+8. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
+
+В файл C:\Windows\System32\drivers\etc\hosts добавим запись 127.0.0.1 vault.netology.devops
+
+Открываем на хостовой машине наш сайт через Google Chrome и проверяем его работоспособность
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Course6.PNG)
 
 
