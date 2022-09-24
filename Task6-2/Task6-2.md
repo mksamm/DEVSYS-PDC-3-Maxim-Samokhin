@@ -31,7 +31,7 @@ volumes:
 
 Запускаем docker-compose up и проверяем запущенный контейнер:
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL21.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL21.PNG)
 
 Заходим в контейнер и PostgreSQL:
 ```
@@ -108,17 +108,17 @@ postgres=# \l
 Приведите:
 - итоговый список БД после выполнения пунктов выше
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL22.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL22.PNG)
 
 - описание таблиц 
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL23.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL23.PNG)
 
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
 
 - список пользователей с правами над таблицами test_db
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL24.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL24.PNG)
 
 ## Задача 3
 
@@ -207,7 +207,7 @@ test_db=#
 Приведите SQL-запросы для выполнения данных операций.
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL25.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL25.PNG)
 
 ## Задача 5
 
@@ -324,4 +324,4 @@ pg_restore.script  test_db.backup
 
 Проверяем восстановленную базу test_db: 
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL26.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-2/SQL26.PNG)
