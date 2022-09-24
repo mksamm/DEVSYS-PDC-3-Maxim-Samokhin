@@ -1,10 +1,17 @@
-version: "3.9"
+version: '3.8'
 services:
-  postgres:
-    image: postgres:13.3
+  db:
+    image: postgres:12-alpine
+    restart: always
     environment:
-      POSTGRES_DB: "habrdb"
-      POSTGRES_USER: "habrpguser"
-      POSTGRES_PASSWORD: "pgpwd4habr"
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+      - backup:/var/tmp
+volumes:
+  db:
+    driver: local
+  backup:
