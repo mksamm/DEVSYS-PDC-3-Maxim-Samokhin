@@ -6,9 +6,9 @@
 
 Подключитесь к БД PostgreSQL используя `psql`.
 
-Воспользуйтесь командой `\?` для вывода подсказки по имеющимся в `psql` управляющим командам.
-
 ![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL0.PNG)
+
+Воспользуйтесь командой `\?` для вывода подсказки по имеющимся в `psql` управляющим командам.
 
 ![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL1.PNG)
 
