@@ -43,8 +43,6 @@ netology@netology-VirtualBox:~/netology/DEVSYS-PDC-3-Maxim-Samokhin/edit/main/Ta
 
 ![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-3/img/SQL35.PNG)
 
-![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-3/img/sql36.PNG)
-
 Используя команду `\h` получите список управляющих команд.
 
 ![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/Task6-3/img/sql36.PNG)
