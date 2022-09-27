@@ -33,5 +33,6 @@ volumes:
 
 Изучите [бэкап БД](https://github.com/netology-code/virt-homeworks/tree/master/06-db-03-mysql/test_data) и восстановитесь из него.
 
-
-
+```
+netology@netology-VirtualBox:~/netology/DEVSYS-PDC-3-Maxim-Samokhin/edit/main/Task6-3$ sudo docker cp test_dump.sql ed89d4a2d9ed:/var/lib/mysql/test_dump.sql
+```
