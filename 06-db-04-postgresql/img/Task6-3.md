@@ -46,3 +46,63 @@
 с наибольшим средним значением размера элементов в байтах.
 
 ![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL4.PNG)
+
+## Задача 3
+
+Архитектор и администратор БД выяснили, что ваша таблица orders разрослась до невиданных размеров и
+поиск по ней занимает долгое время. Вам, как успешному выпускнику курсов DevOps в нетологии предложили
+провести разбиение таблицы на 2 (шардировать на orders_1 - price>499 и orders_2 - price<=499).
+
+Предложите SQL-транзакцию для проведения данной операции.
+
+```
+START TRANSACTION;
+CREATE TABLE orders_new (LIKE orders INCLUDING DEFAULTS) PARTITION BY RANGE (price);
+CREATE TABLE orders_1 PARTITION OF orders_new FOR VALUES FROM (MINVALUE) TO (499);
+CREATE TABLE orders_2 PARTITION OF orders_new FOR VALUES FROM (499) TO (MAXVALUE);
+INSERT INTO orders_new SELECT * FROM orders;
+ALTER TABLE orders RENAME TO orders_old;
+ALTER TABLE orders_new RENAME TO orders;
+COMMIT;
+
+
+postgres=# \c test_database
+You are now connected to database "test_database4" as user "postgres".
+test_database=# START TRANSACTION;
+START TRANSACTION
+test_database=*# CREATE TABLE orders_new (LIKE orders INCLUDING DEFAULTS) PARTITION BY RANGE (price);
+CREATE TABLE
+test_database=*# CREATE TABLE orders_1 PARTITION OF orders_new FOR VALUES FROM (MINVALUE) TO (499);
+CREATE TABLE
+test_database=*# CREATE TABLE orders_2 PARTITION OF orders_new FOR VALUES FROM (499) TO (MAXVALUE);
+CREATE TABLE
+test_database=*# INSERT INTO orders_new SELECT * FROM orders;
+INSERT 0 8
+test_database=*# ALTER TABLE orders RENAME TO orders_old;
+ALTER TABLE
+test_database=*# ALTER TABLE orders_new RENAME TO orders;
+ALTER TABLE
+test_database=*# COMMIT;
+COMMIT
+```
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL5.PNG)
+
+Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
+
+Можно! Во время проектирования таблицы необходимо сразу назначать секционирование, в таком случае отсутствует необходимость переносить данные.
+
+## Задача 4
+
+Используя утилиту `pg_dump` создайте бекап БД `test_database`.
+
+```
+root@33b6e65dfde1:/# pg_dump -U postgres -d test_database >test_database_backup.sql
+```
+
+Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
+
+```
+Можно добавить параметр первичного ключа при определении поля title, заменив `NOT NULL` на `PRIMARY KEY`. 
+Добавить параметр `UNIQUE` для поля.
+```
