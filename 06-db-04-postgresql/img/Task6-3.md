@@ -38,6 +38,11 @@
 
 Перейдите в управляющую консоль `psql` внутри контейнера.
 
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL3.PNG)
+
 Подключитесь к восстановленной БД и проведите операцию ANALYZE для сбора статистики по таблице.
 
-![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL3.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-04-postgresql/img/PostSQL4.PNG)
+
+Используя таблицу [pg_stats](https://postgrespro.ru/docs/postgresql/12/view-pg-stats), найдите столбец таблицы `orders` 
+с наибольшим средним значением размера элементов в байтах.
