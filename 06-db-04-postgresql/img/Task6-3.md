@@ -97,7 +97,7 @@ COMMIT
 Используя утилиту `pg_dump` создайте бекап БД `test_database`.
 
 ```
-root@33b6e65dfde1:/# pg_dump -U postgres -d test_database >test_database_backup.sql
+postgres@33b6e65dfde1:~$ pg_dump -U postgres -d test_database >test_database_backup.sql
 ```
 
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
