@@ -298,6 +298,15 @@ green  open   test-2           9oPRa-AySV6jk0K8TfKn7g   1   0          0        
 
 **Приведите в ответе** запрос к API восстановления и итоговый список индексов.
 ```
+curl -X POST "localhost:9200/_snapshot/netology_backup/elasticsearch/_restore?pretty" -H 'Content-Type: application/json' -d'
+{
+  "indices": "test"
+}
+'
+{
+  "accepted" : true
+}
+
 [elasticsearch@3b3c7ca0c512 /]$ curl -X GET 'http://localhost:9200/_cat/indices?v' 
 health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
 green  open   .geoip_databases htu7NrIgQ2S-KXXQZ82Ztg   1   0         42            0     38.9mb         38.9mb
