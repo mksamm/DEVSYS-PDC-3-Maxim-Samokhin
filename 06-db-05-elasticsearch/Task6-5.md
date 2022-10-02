@@ -217,3 +217,90 @@ curl -X PUT http://localhost:9200/ind-3 -H 'Content-Type: application/json' -d'{
 
 При проектировании кластера elasticsearch нужно корректно рассчитывать количество реплик и шард,
 иначе возможна потеря данных индексов, вплоть до полной, при деградации системы.
+
+## Задача 3
+
+В данном задании вы научитесь:
+- создавать бэкапы данных
+- восстанавливать индексы из бэкапов
+
+Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
+
+Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
+данную директорию как `snapshot repository` c именем `netology_backup`.
+
+**Приведите в ответе** запрос API и результат вызова API для создания репозитория.
+```
+curl -XPOST localhost:9200/_snapshot/netology_backup?pretty -H 'Content-Type: application/json' -d'{"type": "fs", "settings": { "location":"/elasticsearch/snapshots" }}'
+{
+  "acknowledged" : true
+}
+```
+Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
+```
+curl -X PUT "localhost:9200/test?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+'
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "test"
+}
+
+[elasticsearch@3b3c7ca0c512 /]$ curl -X GET 'http://localhost:9200/_cat/indices?v' 
+health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .geoip_databases htu7NrIgQ2S-KXXQZ82Ztg   1   0         41            0     38.9mb         38.9mb
+green  open   test             x_VYKBEhRbWtWDBxS1yvxw   1   0          0            0       208b           208b
+
+```
+**Приведите в ответе** список файлов в директории со `snapshot`ами.
+```
+[elasticsearch@3b3c7ca0c512 /]$ ll
+total 44
+-rw-r--r-- 1 elasticsearch elasticsearch   831 Dec  9 06:56 index-0
+-rw-r--r-- 1 elasticsearch elasticsearch     8 Dec  9 06:56 index.latest
+drwxr-xr-x 4 elasticsearch elasticsearch  4096 Dec  9 06:56 indices
+-rw-r--r-- 1 elasticsearch elasticsearch 27702 Dec  9 06:56 meta-ed0U15ORTpylzoL0sKeG4g.dat
+-rw-r--r-- 1 elasticsearch elasticsearch   440 Dec  9 06:56 snap-ed0U15ORTpylzoL0sKeG4g.dat
+```
+Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
+```
+curl -X DELETE 'http://localhost:9200/test?pretty'
+{
+  "acknowledged" : true
+}
+curl -X PUT "localhost:9200/test-2?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  }
+}
+'
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "test-2"
+}
+curl -X GET 'http://localhost:9200/_cat/indices?v' 
+health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .geoip_databases htu7NrIgQ2S-KXXQZ82Ztg   1   0         41            0     38.9mb         38.9mb
+green  open   test-2           9oPRa-AySV6jk0K8TfKn7g   1   0          0            0       208b           208b
+```
+
+[Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
+кластера `elasticsearch` из `snapshot`, созданного ранее. 
+
+**Приведите в ответе** запрос к API восстановления и итоговый список индексов.
+```
+[elasticsearch@3b3c7ca0c512 /]$ curl -X GET 'http://localhost:9200/_cat/indices?v' 
+health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .geoip_databases htu7NrIgQ2S-KXXQZ82Ztg   1   0         42            0     38.9mb         38.9mb
+green  open   test-2           9oPRa-AySV6jk0K8TfKn7g   1   0          0            0       208b           208b
+green  open   test             x_VYKBEhRbWtWDBxS1yvxw   1   0          0            0       208b           208b
+```
