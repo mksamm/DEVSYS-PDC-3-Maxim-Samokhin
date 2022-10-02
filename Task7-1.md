@@ -87,3 +87,12 @@
 В виде результата этой задачи приложите вывод `--version` двух версий терраформа доступных на вашем компьютере 
 или виртуальной машине.
 
+vagrant@vagrant:~$ terraform -version
+Terraform v1.3.1
+on linux_amd64
+
+vagrant@vagrant:~/legacyterraform$ terraform -version
+Terraform v0.11.14
+
+Your version of Terraform is out of date! The latest version
+is 1.3.1. You can update by downloading from www.terraform.io/downloads.html
