@@ -79,4 +79,4 @@ https://hub.docker.com/repository/docker/mksamm/elasticsearch
 
 - ответ `elasticsearch` на запрос пути `/` в json виде
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-05-elasticsearch/elastic.PNG)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/06-db-05-elasticsearch/elastic.PNG)
