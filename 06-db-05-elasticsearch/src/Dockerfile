@@ -1,4 +1,4 @@
-ROM centos:centos7
+FROM centos:centos7
 
 RUN groupadd -g 1000 elasticsearch && useradd elasticsearch -u 1000 -g 1000
 
