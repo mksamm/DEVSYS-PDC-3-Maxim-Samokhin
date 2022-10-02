@@ -1,6 +1,8 @@
 # Pull base image.
 FROM centos:centos7
 
+MAINTAINER Maxim <scaryck@gmail.com>
+
 ENV ES_PKG_NAME elasticsearch-7.15.2
 
 RUN groupadd -g 1000 elasticsearch && useradd elasticsearch -u 1000 -g 1000
@@ -20,6 +22,14 @@ RUN \
   rm -f $ES_PKG_NAME-linux-x85_64.tar.gz && \
   mv /$ES_PKG_NAME /elasticsearch
 
+# Define mountable directories.
+#VOLUME ["/data"]
+
+# Mount elasticsearch.yml config
+#ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+
+# Define working directory.
+#WORKDIR /data
 RUN mkdir /var/lib/logs /var/lib/data
 
 COPY elasticsearch.yml /elasticsearch/config
