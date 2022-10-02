@@ -1,18 +1,27 @@
 FROM centos:7
-COPY elasticsearch-8.2.0-linux-x86_64.tar.gz  /opt
-COPY elasticsearch-8.2.0-linux-x86_64.tar.gz.sha512  /opt	
-RUN cd /opt && \
-    groupadd elasticsearch && \
-    useradd -c "elasticsearch" -g elasticsearch elasticsearch &&\
-    yum update -y && yum -y install perl-Digest-SHA && \
-    shasum -a 512 -c elasticsearch-8.2.0-linux-x86_64.tar.gz.sha512 && \
-    tar -xzf elasticsearch-8.2.0-linux-x86_64.tar.gz && \
-    rm elasticsearch-8.2.0-linux-x86_64.tar.gz elasticsearch-8.2.0-linux-x86_64.tar.gz.sha512 && \ 
-    mkdir /var/lib/data && chmod -R 777 /var/lib/data && \
-    chown -R elasticsearch:elasticsearch /opt/elasticsearch-8.2.0 && \
-    yum clean all
-USER elasticsearch
-WORKDIR /opt/elasticsearch-8.2.0/
-COPY elasticsearch.yml  config/
-EXPOSE 9200 9300
-ENTRYPOINT ["bin/elasticsearch"]
+
+    RUN yum install wget -y
+    RUN yum install -y java-11-openjdk wget curl perl-Digest-SHA
+
+    RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.3-linux-x86_64.tar.gz
+    RUN mkdir /usr/elasticsearch && \
+        mv elasticsearch-7.17.3-linux-x86_64.tar.gz /usr/elasticsearch && \
+        cd /usr/elasticsearch && \
+        tar -xzf elasticsearch-7.17.3-linux-x86_64.tar.gz
+
+    COPY elasticsearch.yml /usr/elasticsearch/elasticsearch-7.17.3/config/elasticsearch.yml
+
+    RUN groupadd elasticsearch && \
+        useradd elasticsearch -g elasticsearch -p elasticsearch && \
+        cd /opt && \
+        chown -R elasticsearch:elasticsearch /usr/elasticsearch
+
+    RUN mkdir /var/lib/elasticsearch_data && \
+        chown -R elasticsearch:elasticsearch /var/lib/elasticsearch_data && \
+        mkdir /var/lib/elasticsearch_logs && \
+        chown -R elasticsearch:elasticsearch /var/lib/elasticsearch_logs
+
+    USER elasticsearch
+
+    CMD ["/usr/sbin/init"]
+    CMD ["/usr/elasticsearch/elasticsearch-7.17.3/bin/elasticsearch"]
