@@ -1,27 +1,47 @@
-FROM centos:7
+# Pull base image.
+FROM centos:centos7
 
-    RUN yum install wget -y
-    RUN yum install -y java-11-openjdk wget curl perl-Digest-SHA
+ENV ES_PKG_NAME elasticsearch-7.15.2
 
-    RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.3-linux-x86_64.tar.gz
-    RUN mkdir /usr/elasticsearch && \
-        mv elasticsearch-7.17.3-linux-x86_64.tar.gz /usr/elasticsearch && \
-        cd /usr/elasticsearch && \
-        tar -xzf elasticsearch-7.17.3-linux-x86_64.tar.gz
+RUN groupadd -g 1000 elasticsearch && useradd elasticsearch -u 1000 -g 1000
 
-    COPY elasticsearch.yml /usr/elasticsearch/elasticsearch-7.17.3/config/elasticsearch.yml
+RUN yum makecache && \
+    yum -y install wget \
+    yum -y install perl-Digest-SHA
 
-    RUN groupadd elasticsearch && \
-        useradd elasticsearch -g elasticsearch -p elasticsearch && \
-        cd /opt && \
-        chown -R elasticsearch:elasticsearch /usr/elasticsearch
 
-    RUN mkdir /var/lib/elasticsearch_data && \
-        chown -R elasticsearch:elasticsearch /var/lib/elasticsearch_data && \
-        mkdir /var/lib/elasticsearch_logs && \
-        chown -R elasticsearch:elasticsearch /var/lib/elasticsearch_logs
+# Install Elasticsearch.
+RUN \
+  cd / && \
+  wget https://artifacts.elastic.co/downloads/elasticsearch/$ES_PKG_NAME-linux-x86_64.tar.gz && \
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.2-linux-x86_64.tar.gz.sha512 && \
+  shasum -a 512 -c elasticsearch-7.15.2-linux-x86_64.tar.gz.sha512 && \
+  tar -xzf $ES_PKG_NAME-linux-x86_64.tar.gz && \
+  rm -f $ES_PKG_NAME-linux-x85_64.tar.gz && \
+  mv /$ES_PKG_NAME /elasticsearch
 
-    USER elasticsearch
+# Define mountable directories.
+#VOLUME ["/data"]
 
-    CMD ["/usr/sbin/init"]
-    CMD ["/usr/elasticsearch/elasticsearch-7.17.3/bin/elasticsearch"]
+# Mount elasticsearch.yml config
+#ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+
+# Define working directory.
+#WORKDIR /data
+RUN mkdir /var/lib/logs /var/lib/data
+
+COPY elasticsearch.yml /elasticsearch/config
+
+RUN chmod -R 777 /elasticsearch && \
+    chmod -R 777 /var/lib/logs && \
+    chmod -R 777 /var/lib/data
+
+USER elasticsearch
+# Define default command.
+CMD ["/elasticsearch/bin/elasticsearch"]
+
+# Expose ports.
+#   - 9200: HTTP
+#   - 9300: transport
+EXPOSE 9200
+EXPOSE 9300
