@@ -61,7 +61,7 @@ $ cat group_vars/el/examp.yml
  
  ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible11.PNG)
  
- ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible12.PNG)
+ ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/ansible12.PNG)
  
  9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
  ```
