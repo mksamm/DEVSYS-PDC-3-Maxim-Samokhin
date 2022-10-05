@@ -7,16 +7,25 @@
 3. Скачайте [playbook](./playbook/) из репозитория с домашним заданием и перенесите его в свой репозиторий.
    Ссылка на собственный [репозиторий в GitHub](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/tree/main/08-ansible-01-base/playbook)
    ## Основная часть
+   
 1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте какое значение имеет факт `some_fact` для указанного хоста при выполнении playbook'a.
+
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible2.PNG)
+
 2. Найдите файл с переменными (group_vars) в котором задаётся найденное в первом пункте значение и поменяйте его на 'all default fact'.
+
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible16.PNG)
+
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
+
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible4.PNG)
+
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
+
    ```
    $ ansible-playbook site.yml -i inventory/prod.yml
    ```
+   
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible5.PNG)
 
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible6.PNG)
