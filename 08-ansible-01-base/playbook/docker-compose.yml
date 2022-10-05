@@ -1,0 +1,9 @@
+version: '3'
+services:
+  centos7:
+    image: fnndsc/centos-python3:latest
+    container_name: centos7
+
+  ubuntu:
+    image: fnndsc/ubuntu-python3
+    container_name: ubuntu
