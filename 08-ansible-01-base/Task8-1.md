@@ -52,19 +52,28 @@ $ cat group_vars/el/examp.yml
    ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible8.PNG)
    
  7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
+ 8. 
  ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible9.PNG)
+ 
  8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
+
  ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible10.PNG)
+ 
  ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible11.PNG)
+ 
  ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible12.PNG)
+ 
  9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
+ ```
 $ ansible-doc -t connection local
+
    > ANSIBLE.BUILTIN.LOCAL    (/usr/lib/python3/dist-packages/ansible/plugins/connection/local.py)
    This connection plugin allows ansible to execute tasks on the Ansible 'controller' instead of on a remote host.
    NOTES:
          * The remote user is ignored, the user with which the ansible CLI was executed is used instead.
    AUTHOR: ansible (@core)
    VERSION_ADDED_COLLECTION: ansible.builtin
+ ```
    10. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
     Добавляем в файл inventory/prod.yml следующий код:
     ```
