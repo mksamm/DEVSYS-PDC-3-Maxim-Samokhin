@@ -52,7 +52,7 @@ $ cat group_vars/el/examp.yml
    ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible8.PNG)
    
  7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
- 8. 
+ 
  ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible9.PNG)
  
  8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
