@@ -18,8 +18,14 @@
    $ ansible-playbook site.yml -i inventory/prod.yml
    ```
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible5.PNG)
+
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible6.PNG)
-5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились следующие значения: для `deb` - 'deb default fact', для `el` - 'el default fact'.
+
+5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились следующие значения: 
+для `deb` - 'deb default fact', 
+для `el` - 'el default fact'.
+
+
 ```
 $ cat group_vars/deb/examp.yml
 ---
