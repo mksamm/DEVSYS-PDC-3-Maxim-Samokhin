@@ -25,7 +25,6 @@
 для `deb` - 'deb default fact', 
 для `el` - 'el default fact'.
 
-
 ```
 $ cat group_vars/deb/examp.yml
 ---
@@ -35,6 +34,7 @@ $ cat group_vars/el/examp.yml
   some_fact: "el default fact"
 ```
 ![image.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-01-base/images/Ansible7.PNG)
+
 6. Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
    
    ```
