@@ -1,6 +1,6 @@
 provider "yandex" {
-  cloud_id  = ""
-  folder_id = ""
+  cloud_id  = "b1gb8tnrcg5uk53e5b74"
+  folder_id = "b1gopdq3h799jne7ns71"
   zone      = "ru-central1-a"
 }
 
