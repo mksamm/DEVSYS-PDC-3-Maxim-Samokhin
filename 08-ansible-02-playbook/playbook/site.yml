@@ -15,14 +15,12 @@
       until: download_java_binaries is succeeded
       tags: java
     - name: Ensure installation dir exists
-      become: true
       ansible.builtin.file:
         state: directory
         path: "{{ java_home }}"
         mode: 0755
       tags: java
     - name: Extract java in the installation directory
-      become: true
       ansible.builtin.unarchive:
         copy: false
         src: "/tmp/jdk-{{ java_jdk_version }}.tar.gz"
@@ -32,11 +30,10 @@
       tags:
         - java
     - name: Export environment variables
-      become: true
       ansible.builtin.template:
         src: jdk.sh.j2
         dest: /etc/profile.d/jdk.sh
-        mode: 0644
+        mode: 0755
       tags: java
 - name: Install Elasticsearch
   hosts: elasticsearch
@@ -45,7 +42,7 @@
       ansible.builtin.get_url:
         url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
         dest: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
-        mode: 0755
+        mode: 0644
         timeout: 60
         force: true
         validate_certs: false
@@ -59,7 +56,6 @@
         mode: 0755
       tags: elastic
     - name: Extract Elasticsearch in the installation directory
-      become: true
       ansible.builtin.unarchive:
         copy: false
         src: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
@@ -69,11 +65,10 @@
       tags:
         - elastic
     - name: Set environment Elastic
-      become: true
       ansible.builtin.template:
         src: templates/elk.sh.j2
         dest: /etc/profile.d/elk.sh
-        mode: 0644
+        mode: 0755
       tags: elastic
 - name: Install Kibana
   hosts: kibana
@@ -96,18 +91,17 @@
         mode: 0755
       tags: kibana
     - name: Extract Kibana in the installation directory
-      become: true
       ansible.builtin.unarchive:
         copy: false
         src: "/tmp/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
         dest: "{{ kibana_home }}"
         extra_opts: [--strip-components=1]
         creates: "{{ kibana_home }}/bin/kibana"
-      tags: kibana
+      tags:
+        - kibana
     - name: Set environment Kibana
-      become: true
       ansible.builtin.template:
-        src: templates/kibana.sh.j2
-        dest: /etc/profile.d/kibana.sh
-        mode: 0644
+        src: templates/kib.sh.j2
+        dest: /etc/profile.d/kib.sh
+        mode: 0755
       tags: kibana
