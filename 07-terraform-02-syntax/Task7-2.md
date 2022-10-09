@@ -53,6 +53,8 @@ Amazon AMI Builder плагин c помощью инструмента [Packer]
 Этот инструмент позволяет создавать образы AMI. 
 Также с помощью встроенных средств Amazon Web Services можно создать AMI  из работающего инстанса.
 
+[img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/07-terraform-02-syntax/tf2.PNG)
+
 2. Ссылку на репозиторий с исходной конфигурацией терраформа.
  
 <https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/tree/main/07-terraform-02-syntax/src>
