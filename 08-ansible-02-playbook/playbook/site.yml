@@ -28,7 +28,7 @@
           - clickhouse-server-{{ clickhouse_version }}.rpm
       notify: Start clickhouse service
 
-    - name: Force restart clickhouse service
+    -name: Force restart clickhouse service
       ansible.builtin.meta: flush_handlers
 
     - name: Create database
