@@ -1,7 +1,9 @@
 ---
-clickhouse:
-  hosts:
-    clickhouse-01:
-      ansible_host: 10.0.2.15
-      ansible_connection: ssh
-      ansible_ssh_user: root
+  elasticsearch:
+    hosts:
+      elasticsearch-centos7:
+        ansible_connection: docker
+  kibana:
+    hosts:
+      kibana-centos7:
+        ansible_connection: docker
