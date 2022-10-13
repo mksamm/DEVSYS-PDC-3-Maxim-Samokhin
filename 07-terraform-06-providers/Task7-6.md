@@ -26,7 +26,7 @@
     * Какая максимальная длина имени? 
     * Какому регулярному выражению должно подчиняться имя? 
 
--[ConflictsWith: []string"name_prefix"](https://github.com/hashicorp/terraform-provider-aws/blob/8ed579596823be7604461c75ad564c83bf3b6c69/internal/service/sqs/queue.go#L87)
+- [ConflictsWith: []string"name_prefix"](https://github.com/hashicorp/terraform-provider-aws/blob/8ed579596823be7604461c75ad564c83bf3b6c69/internal/service/sqs/queue.go#L87)
 
 - Максимальная длина имени не может превышать 80 символов
 
