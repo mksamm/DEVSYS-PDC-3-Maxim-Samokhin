@@ -1,9 +1,13 @@
 ---
+  local:
+    hosts:
+      localhost:
+        ansible_connection: local
   elasticsearch:
     hosts:
-      elasticsearch-centos7:
+      elastic:
         ansible_connection: docker
   kibana:
     hosts:
-      kibana-centos7:
+      kibana:
         ansible_connection: docker
