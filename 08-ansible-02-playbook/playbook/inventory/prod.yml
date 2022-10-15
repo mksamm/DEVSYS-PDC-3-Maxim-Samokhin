@@ -6,8 +6,8 @@
   elasticsearch:
     hosts:
       elastic:
-        ansible_connection: docker
+        ansible_connection: local
   kibana:
     hosts:
       kibana:
-        ansible_connection: docker
+        ansible_connection: local
