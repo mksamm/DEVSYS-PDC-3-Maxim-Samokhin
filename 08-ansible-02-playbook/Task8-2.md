@@ -83,6 +83,177 @@ elastic-docker             : ok=9    changed=2    unreachable=0    failed=0    s
 ```
 
 8. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
-9. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
-10. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
-11. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.
+```
+vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$ sudo ansible-playbook -i ./inventory/prod.yml site.yml --diff
+[WARNING]: The plugin filter file, /etc/ansible/plugin_filters.yml does not exist. Skipping.
+SSH password:
+[WARNING]: Skipping unexpected key (local) in group (kibana), only "vars", "children" and "hosts" are valid
+
+PLAY [Install Java] ******************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+ok: [container_kibana]
+ok: [elastic-docker]
+
+TASK [Set facts for Java 11 vars] ****************************************************************************************************************************************************************
+ok: [elastic-docker]
+ok: [container_kibana]
+
+TASK [Creates tmp directory] *********************************************************************************************************************************************************************
+ok: [container_kibana]
+ok: [elastic-docker]
+
+TASK [Ensure installation dir exists] ************************************************************************************************************************************************************
+ok: [elastic-docker]
+ok: [container_kibana]
+
+TASK [Extract java in the installation directory] ************************************************************************************************************************************************
+changed: [elastic-docker]
+changed: [container_kibana]
+
+TASK [Export environment variables] **************************************************************************************************************************************************************
+--- before
++++ after: /root/.ansible/tmp/ansible-local-20170fwejoo_0/tmp2yos8gu4/jdk.sh.j2
+@@ -0,0 +1,5 @@
++# Warning: This file is Ansible Managed, manual changes will be overwritten on next playbook run.
++#!/usr/bin/env bash
++
++export JAVA_HOME=/opt/jdk/11.0.16.1
++export PATH=$PATH:$JAVA_HOME/bin
+
+changed: [container_kibana]
+ok: [elastic-docker]
+
+PLAY [Install Elasticsearch] *********************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+ok: [elastic-docker]
+
+TASK [Upload tar.gz Elasticsearch from local storage] ********************************************************************************************************************************************
+ok: [elastic-docker]
+
+TASK [Create directrory for Elasticsearch] *******************************************************************************************************************************************************
+ok: [elastic-docker]
+
+TASK [Extract Elasticsearch in the installation directory] ***************************************************************************************************************************************
+changed: [elastic-docker]
+
+TASK [Set environment Elastic] *******************************************************************************************************************************************************************
+--- before
++++ after: /root/.ansible/tmp/ansible-local-20170fwejoo_0/tmp02fgpqr8/elk.sh.j2
+@@ -0,0 +1,5 @@
++# Warning: This file is Ansible Managed, manual changes will be overwritten on next playbook run.
++#!/usr/bin/env bash
++
++export ES_HOME=/opt/elastic/7.10.1
++export PATH=$PATH:$ES_HOME/bin
+
+changed: [elastic-docker]
+
+PLAY [Install Kibana] ****************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+ok: [container_kibana]
+
+TASK [Upload tar.gz Kibana from local storage] ***************************************************************************************************************************************************
+ok: [container_kibana]
+
+TASK [Create directrory for kibana] **************************************************************************************************************************************************************
+ok: [container_kibana]
+
+TASK [Extract kibana in the installation directory] **********************************************************************************************************************************************
+changed: [container_kibana]
+
+TASK [Set environment Kibana] ********************************************************************************************************************************************************************
+--- before
++++ after: /root/.ansible/tmp/ansible-local-20170fwejoo_0/tmp744gzc6j/kib.sh.j2
+@@ -0,0 +1,5 @@
++# Warning: This file is Ansible Managed, manual changes will be overwritten on next playbook run.
++#!/usr/bin/env bash
++
++export KIBANA_HOME=/opt/kibana/7.10.1
++export PATH=$PATH:$KIBANA_HOME/bin
+
+changed: [container_kibana]
+
+PLAY RECAP ***************************************************************************************************************************************************************************************
+container_kibana           : ok=11   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+elastic-docker             : ok=11   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+10. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+```
+vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$ sudo ansible-playbook -i ./inventory/prod.yml site.yml --diff
+[WARNING]: The plugin filter file, /etc/ansible/plugin_filters.yml does not exist. Skipping.
+SSH password:
+[WARNING]: Skipping unexpected key (local) in group (kibana), only "vars", "children" and "hosts" are valid
+
+PLAY [Install Java] ******************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+ok: [elastic-docker]
+ok: [container_kibana]
+
+TASK [Set facts for Java 11 vars] ****************************************************************************************************************************************************************
+ok: [elastic-docker]
+ok: [container_kibana]
+
+TASK [Creates tmp directory] *********************************************************************************************************************************************************************
+ok: [elastic-docker]
+ok: [container_kibana]
+
+TASK [Ensure installation dir exists] ************************************************************************************************************************************************************
+ok: [elastic-docker]
+ok: [container_kibana]
+
+TASK [Extract java in the installation directory] ************************************************************************************************************************************************
+skipping: [elastic-docker]
+skipping: [container_kibana]
+
+TASK [Export environment variables] **************************************************************************************************************************************************************
+ok: [container_kibana]
+ok: [elastic-docker]
+
+PLAY [Install Elasticsearch] *********************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+ok: [elastic-docker]
+
+TASK [Upload tar.gz Elasticsearch from local storage] ********************************************************************************************************************************************
+ok: [elastic-docker]
+
+TASK [Create directrory for Elasticsearch] *******************************************************************************************************************************************************
+ok: [elastic-docker]
+
+TASK [Extract Elasticsearch in the installation directory] ***************************************************************************************************************************************
+skipping: [elastic-docker]
+
+TASK [Set environment Elastic] *******************************************************************************************************************************************************************
+ok: [elastic-docker]
+
+PLAY [Install Kibana] ****************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************
+ok: [container_kibana]
+
+TASK [Upload tar.gz Kibana from local storage] ***************************************************************************************************************************************************
+ok: [container_kibana]
+
+TASK [Create directrory for kibana] **************************************************************************************************************************************************************
+ok: [container_kibana]
+
+TASK [Extract kibana in the installation directory] **********************************************************************************************************************************************
+skipping: [container_kibana]
+
+TASK [Set environment Kibana] ********************************************************************************************************************************************************************
+ok: [container_kibana]
+
+PLAY RECAP ***************************************************************************************************************************************************************************************
+container_kibana           : ok=9    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+elastic-docker             : ok=9    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$
+```
+
+12. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
+
+14. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.
