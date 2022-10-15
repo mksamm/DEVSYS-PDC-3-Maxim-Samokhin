@@ -82,7 +82,7 @@ container_kibana           : ok=9    changed=2    unreachable=0    failed=0    s
 elastic-docker             : ok=9    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
 ```
 
-8. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
 ```
 vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$ sudo ansible-playbook -i ./inventory/prod.yml site.yml --diff
 [WARNING]: The plugin filter file, /etc/ansible/plugin_filters.yml does not exist. Skipping.
@@ -180,7 +180,7 @@ PLAY RECAP *********************************************************************
 container_kibana           : ok=11   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 elastic-docker             : ok=11   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
-10. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
 ```
 vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$ sudo ansible-playbook -i ./inventory/prod.yml site.yml --diff
 [WARNING]: The plugin filter file, /etc/ansible/plugin_filters.yml does not exist. Skipping.
@@ -254,10 +254,10 @@ elastic-docker             : ok=9    changed=0    unreachable=0    failed=0    s
 vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$
 ```
 
-12. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
+9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
 
 - [README](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-02-playbook/playbook/README.MD)
 
-14. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.
+10. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.
 
 - [PLAYBOOK](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/tree/main/08-ansible-02-playbook/playbook)
