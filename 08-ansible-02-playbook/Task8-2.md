@@ -256,4 +256,8 @@ vagrant@vagrant:~/DEVSYS-PDC-3-Maxim-Samokhin/08-ansible-02-playbook/playbook$
 
 12. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
 
+- [README](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/08-ansible-02-playbook/playbook/README.MD)
+
 14. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.
+
+- [PLAYBOOK](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/tree/main/08-ansible-02-playbook/playbook)
