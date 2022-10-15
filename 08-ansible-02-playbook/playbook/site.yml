@@ -15,14 +15,14 @@
       until: download_java_binaries is succeeded
       tags: java
     - name: Ensure installation dir exists
-#      become: true
+      become: true
       ansible.builtin.file:
         state: directory
         path: "{{ java_home }}"
         mode: '755'
       tags: java
     - name: Extract java in the installation directory
-#      become: true
+      become: true
       ansible.builtin.unarchive:
         copy: false
         src: "/tmp/jdk-{{ java_jdk_version }}.tar.gz"
@@ -33,7 +33,7 @@
       tags:
         - java
     - name: Export environment variables
-#      become: true
+      become: true
       ansible.builtin.template:
         src: jdk.sh.j2
         dest: /etc/profile.d/jdk.sh
@@ -41,7 +41,7 @@
       tags: java
 - name: Install Elasticsearch
   hosts: local
-#  become: yes
+  become: yes
   tasks:
     - name: Upload tar.gz Elasticsearch from remote URL
 #      get_url:
@@ -65,7 +65,7 @@
         mode: '755'
       tags: elastic
     - name: Extract Elasticsearch in the installation directory
-#      become: true
+      become: true
       ansible.builtin.unarchive:
         copy: false
         src: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
@@ -76,7 +76,7 @@
       tags:
         - elastic
     - name: Set environment Elastic
-#      become: true
+      become: true
       ansible.builtin.template:
         src: templates/elk.sh.j2
         dest: /etc/profile.d/elk.sh
@@ -85,7 +85,7 @@
 ####
 - name: Install kibana
   hosts: local
-#  become: yes
+  become: yes
   tasks:
     - name: Upload tar.gz kibana from remote URL
       ansible.builtin.copy:
@@ -102,7 +102,7 @@
         mode: '755'
       tags: kibana
     - name: Extract kibana in the installation directory
-#      become: true
+      become: true
       ansible.builtin.unarchive:
         copy: false
         src: "/tmp/kibana-{{ elastic_version }}-linux-x86_64.tar.gz"
@@ -113,7 +113,7 @@
       tags:
         - kibana
     - name: Set environment kibana
-#      become: true
+      become: true
       ansible.builtin.template:
         src: templates/elk.sh.j2
         dest: /etc/profile.d/elk.sh
