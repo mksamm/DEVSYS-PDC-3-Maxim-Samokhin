@@ -1,6 +1,6 @@
 ---
   - name: Install Elasticsearch
-  hosts: elasticsearch
+  hosts: all
   tasks:
     - name: Upload tar.gz Elasticsearch from remote URL
       ansible.builtin.get_url:
@@ -35,7 +35,7 @@
         mode: 0755
       tags: elastic
 - name: Install Kibana
-  hosts: kibana
+  hosts: all
   tasks:
     - name: Upload tar.gz Kibana from remote URL
       ansible.builtin.get_url:
