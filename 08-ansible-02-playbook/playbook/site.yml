@@ -44,15 +44,6 @@
       ansible.builtin.package:
         name: ufw
         state: present
-    - name: Enabling ufw
-      become: true
-      community.general.ufw:
-        rule: allow
-        state: enabled
-        port: '{{ item }}'
-      with_items:
-        - ssh
-        - 9200
     - name: Configuring Elasticsearch
       become: true
       ansible.builtin.lineinfile:
