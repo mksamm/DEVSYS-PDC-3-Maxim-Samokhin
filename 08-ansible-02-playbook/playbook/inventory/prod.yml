@@ -1,13 +1,11 @@
 ---
+  elasticsearch:
+    hosts:
+      elastic-docker:
+        ansible_connection: docker
+        become: false
   local:
     hosts:
       localhost:
         ansible_connection: local
-  elasticsearch:
-    hosts:
-      elastic:
-        ansible_connection: local
-  kibana:
-    hosts:
-      kibana:
-        ansible_connection: local
+        become: true
