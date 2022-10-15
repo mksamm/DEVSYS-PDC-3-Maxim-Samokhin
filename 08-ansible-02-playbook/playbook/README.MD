@@ -18,11 +18,11 @@
 
 ## Параметры
 
-`Параметры скачиваняи пакета джавы`
+`Параметры загрузки пакета джавы` Можно попробовать загузить так, а можно и установить сам пакет JDK вручную (см. site.yml)
 ```bash
    - name: Set facts for Java 11 vars
       set_fact:
-        java_home: "/opt/jdk/{{ java_jdk_version }}"        # Домашняя папка  (Я бы пернес в переменные) 
+        java_home: "/opt/jdk/{{ java_jdk_version }}"        # Домашняя директорию 
       tags: java
     - name: Download java from remote URL
       get_url:
