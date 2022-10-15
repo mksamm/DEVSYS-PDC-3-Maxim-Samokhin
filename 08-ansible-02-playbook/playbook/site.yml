@@ -1,26 +1,42 @@
 ---
+- name: Install Java and elasticsearch
+  hosts: all
+  become: true
+  gather_facts: False
+  tasks:
+  - name: install java
+    apt:
+      name: default-jre
+      state: latest
+
 - name: Install Elasticsearch
   hosts: elasticsearch
   tasks:
+
+    - name: check filesystem existence
+      shell: if [[ -d "tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz" ]]; then echo "true"; fi
+      register: file_exists
+
     - name: Upload tar.gz Elasticsearch from remote URL
-      ansible.builtin.get_url:
+      get_url:
         url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
         dest: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
-        mode: 0644
+        mode: 0755
         timeout: 60
         force: true
         validate_certs: false
       register: get_elastic
       until: get_elastic is succeeded
+      when: file_exists.stdout == "true"
       tags: elastic
     - name: Create directrory for Elasticsearch
-      ansible.builtin.file:
+      file:
         state: directory
         path: "{{ elastic_home }}"
-        mode: 0755
       tags: elastic
     - name: Extract Elasticsearch in the installation directory
-      ansible.builtin.unarchive:
+      become: true
+      unarchive:
         copy: false
         src: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
         dest: "{{ elastic_home }}"
@@ -29,43 +45,48 @@
       tags:
         - elastic
     - name: Set environment Elastic
-      ansible.builtin.template:
+      become: true
+      template:
         src: templates/elk.sh.j2
         dest: /etc/profile.d/elk.sh
-        mode: 0755
       tags: elastic
+  
 - name: Install Kibana
-  hosts: kibana
+  hosts: all
   tasks:
-    - name: Upload tar.gz Kibana from remote URL
-      ansible.builtin.get_url:
-        url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
-        dest: "/tmp/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
+
+    - name: check filesystem existence
+      shell: if [[ -d "tmp/kibana-8.3.2-linux-x86_64.tar.gz" ]]; then echo "true"; fi
+      register: file_exists
+
+    - name: dowland kibana
+      get_url:
+        url: "https://artifacts.elastic.co/downloads/kibana/kibana-8.3.2-linux-x86_64.tar.gz"
+        dest: "/tmp/kibana-8.3.2-linux-x86_64.tar.gz"
         mode: 0755
         timeout: 60
         force: true
         validate_certs: false
       register: get_kibana
       until: get_kibana is succeeded
+      when: file_exists.stdout == "true"
       tags: kibana
-    - name: Create directrory for Kibana
-      ansible.builtin.file:
+    - name: Create directory from kibana
+      file:
         state: directory
-        path: "{{ kibana_home }}"
-        mode: 0755
+        path: "/opt/elastic/kibana-8.3.2"
       tags: kibana
-    - name: Extract Kibana in the installation directory
-      ansible.builtin.unarchive:
+    - name: Coppy to files bin
+      become: true
+      unarchive:
         copy: false
-        src: "/tmp/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
-        dest: "{{ kibana_home }}"
+        src: "/tmp/kibana-8.3.2-linux-x86_64.tar.gz"
+        dest: "/opt/elastic/kibana-8.3.2"
         extra_opts: [--strip-components=1]
-        creates: "{{ kibana_home }}/bin/kibana"
-      tags:
-        - kibana
-    - name: Set environment Kibana
-      ansible.builtin.template:
+        creates: "/opt/elastic/kibana-8.3.2/bin/kibana"
+      tags: kibana
+    - name: set environment kibana
+      template: 
         src: templates/kib.sh.j2
         dest: /etc/profile.d/kib.sh
-        mode: 0755
-      tags: kibana
+      tags: kibana 
