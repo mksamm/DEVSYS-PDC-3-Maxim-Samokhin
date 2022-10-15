@@ -11,7 +11,7 @@
 ## Зависимости:
 
 - Требуется поместить в `./playbook/files`  предварительно скачанные пакеты.
-  - Например:
+  - Пример:
     - https://artifacts.elastic.co/downloads/kibana/kibana-8.0.0-linux-x86_64.tar.gz
     - https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.2-linux-x86_64.tar.gz
 
@@ -39,20 +39,20 @@
 
 `playbook/group_vars/all/vars.yml`
 ```yml
-java_jdk_version: "11.0.15"                                 # Номер версии зависимость с java_home
+java_jdk_version: "11.0.16.1"                                 # Номер версии зависимость с java_home
 ```
 
 
 `playbook/group_vars/elasticsearch/vars.yml`
 ```yml
-elastic_version: "7.15.2"                                   # Номер требуемой версии для установки (лучше указать реальный номер исходя из устанавливаемого пакета)
-elastic_package: elasticsearch-7.15.2-linux-x86_64.tar.gz   # Имя пакета для установки в папке files
+elastic_version: "7.10.1"                                   # Номер требуемой версии для установки (лучше указать реальный номер исходя из устанавливаемого пакета)
+elastic_package: elasticsearch-7.10.1-linux-x86_64.tar.gz   # Имя пакета для установки в папке files
 elastic_home: "/opt/elastic/{{ elastic_version }}"          # Домашняя папка
 ```
 
 `playbook/group_vars/kibana/vars.yml`
 ```yml
-kibana_version: "7.15.2"                                   #Номер требуемой версии для установки (лучше указать реальный номер исходя из устанавливаемого пакета)
+kibana_version: "7.10.1"                                   #Номер требуемой версии для установки (лучше указать реальный номер исходя из устанавливаемого пакета)
 kibana_package: "kibana-8.0.0-linux-x86_64.tar.gz"         # Имя пакета для установки в папке files
 kibana_home: "/opt/kibana/{{ kibana_version }}"            # Домашняя папка
 ```
