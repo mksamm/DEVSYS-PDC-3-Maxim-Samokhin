@@ -14,6 +14,11 @@
       register: download_java_binaries
       until: download_java_binaries is succeeded
       tags: java
+    - name: Create directory for JAVA
+      file:
+        state: directory
+        path: "/opt/jdk/11.0.16.1"
+      tags: java
     - name: Ensure installation dir exists
       become: true
       file:
