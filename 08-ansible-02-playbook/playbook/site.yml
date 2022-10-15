@@ -1,6 +1,6 @@
 ---
 - name: Install Java
-  hosts: all
+  hosts: local
   tasks:
     - name: Set facts for Java 11 vars
       ansible.builtin.set_fact:
@@ -40,7 +40,7 @@
         mode: '755'
       tags: java
 - name: Install Elasticsearch
-  hosts: elasticsearch
+  hosts: local
 #  become: yes
   tasks:
     - name: Upload tar.gz Elasticsearch from remote URL
@@ -84,7 +84,7 @@
       tags: elastic
 ####
 - name: Install kibana
-  hosts: elasticsearch
+  hosts: local
 #  become: yes
   tasks:
     - name: Upload tar.gz kibana from remote URL
