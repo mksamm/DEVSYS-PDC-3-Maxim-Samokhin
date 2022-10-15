@@ -1,5 +1,5 @@
 - name: Install Elasticsearch
-    hosts: elasticsearch
+    hosts: localhost
     tasks:
       - name: Upload tar.gz Elasticsearch from remote URL
         get_url:
@@ -35,7 +35,7 @@
           dest: /etc/profile.d/elk.sh
         tags: elastic
   - name: Install Kibana
-    hosts: kibana
+    hosts: localhost
     tasks:
       - name: Upload tar.gz Kibana from remote URL
         get_url:
