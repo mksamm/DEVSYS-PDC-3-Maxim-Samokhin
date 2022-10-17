@@ -86,9 +86,20 @@
 3. Проверяем `mvn --version`
 4. Забираем директорию [mvn](./mvn) с pom
 
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2017.41.27.png)
+
 ### Основная часть
 
 1. Меняем в `pom.xml` блок с зависимостями под наш артефакт из первого пункта задания для Nexus (java с версией 8_282)
+
 2. Запускаем команду `mvn package` в директории с `pom.xml`, ожидаем успешного окончания
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2017.59.12.png)
+
 3. Проверяем директорию `~/.m2/repository/`, находим наш артефакт
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2018.02.01.png)
+
 4. В ответе присылаем исправленный файл `pom.xml`
+
+[pom.xml](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/mvn/pom.xml)
