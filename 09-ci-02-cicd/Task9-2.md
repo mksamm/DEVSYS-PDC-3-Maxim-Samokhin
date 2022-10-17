@@ -54,16 +54,25 @@
 5. Узнаём пароль от admin через `docker exec -it nexus /bin/bash`
 6. Подключаемся под админом, меняем пароль, сохраняем анонимный доступ
 
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2017.01.19.png)
+
 ### Основная часть
 
-1. В репозиторий `maven-public` загружаем артефакт с GAV параметрами:
+1. В репозиторий `maven-public` загружаем артефакт с GAV параметрами: * У меня получилось загрузить в maven-releases *
    1. groupId: netology
    2. artifactId: java
    3. version: 8_282
    4. classifier: distrib
    5. type: tar.gz
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2017.31.56.png)
+
 2. В него же загружаем такой же артефакт, но с version: 8_102
+
 3. Проверяем, что все файлы загрузились успешно
+
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2017.32.59.png)
+
 4. В ответе присылаем файл `maven-metadata.xml` для этого артефекта
 
 ### Знакомство с Maven
