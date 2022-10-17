@@ -16,7 +16,7 @@
 
 1. Создаём новый проект, название произвольное
 
-[!img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2015.04.18.png)
+![img.png](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-02-cicd/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-17%20%D0%B2%2015.04.18.png)
 
 . Скачиваем пакет sonar-scanner, который нам предлагает скачать сам sonarqube
 4. Делаем так, чтобы binary был доступен через вызов в shell (или меняем переменную PATH или любой другой удобный вам способ)
