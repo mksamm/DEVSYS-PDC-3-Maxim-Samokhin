@@ -30,3 +30,7 @@
 Перейти в scrum, запланировать новый спринт, состоящий из задач эпика и одного бага, стартовать спринт, провести задачи до состояния Closed. Закрыть спринт.
 
 Если всё отработало в рамках ожидания - выгрузить схемы workflow для импорта в XML. Файлы с workflow приложить к решению задания.
+
+[bug.xml](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-01-intro/XML/bug.xml)
+
+[other.xml](https://github.com/mksamm/DEVSYS-PDC-3-Maxim-Samokhin/blob/main/09-ci-01-intro/XML/other.xml)
