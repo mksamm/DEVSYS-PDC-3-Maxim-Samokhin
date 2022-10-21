@@ -16,8 +16,7 @@ resource "yandex_compute_instance" "maksam" {
 
   network_interface {
     subnet_id      = "e9bt1qpbnfnstktmi2vu"
-    nat            = true
-    nat_ip_address = var.yc_dedicated_ip
+    nat            = false
   }
 
   metadata = {
