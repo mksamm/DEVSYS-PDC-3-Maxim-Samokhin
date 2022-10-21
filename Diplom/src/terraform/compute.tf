@@ -94,7 +94,7 @@ resource "yandex_compute_instance" "monitoring" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.my-subnet-a.id
+    subnet_id = "e9bt1qpbnfnstktmi2vu"
     nat       = false
   }
 
