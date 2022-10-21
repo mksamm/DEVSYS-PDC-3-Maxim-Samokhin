@@ -15,7 +15,7 @@ resource "yandex_compute_instance" "maksam" {
   }
 
   network_interface {
-    subnet_id      = yandex_vpc_subnet.my-subnet-a.id
+    subnet_id      = "e9bt1qpbnfnstktmi2vu"
     nat            = true
     nat_ip_address = var.yc_dedicated_ip
   }
@@ -69,7 +69,7 @@ resource "yandex_compute_instance" "gitlab" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.my-subnet-a.id
+    subnet_id = "e9bt1qpbnfnstktmi2vu"
     nat       = false
   }
 
@@ -121,7 +121,7 @@ resource "yandex_compute_instance" "db01" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.my-subnet-a.id
+    subnet_id = "e9bt1qpbnfnstktmi2vu"
     nat       = false
   }
 
@@ -147,7 +147,7 @@ resource "yandex_compute_instance" "db02" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.my-subnet-a.id
+    subnet_id = "e9bt1qpbnfnstktmi2vu"
     nat       = false
   }
 
@@ -173,7 +173,7 @@ resource "yandex_compute_instance" "runner" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.my-subnet-a.id
+    subnet_id = "e9bt1qpbnfnstktmi2vu"
     nat       = false
   }
 
